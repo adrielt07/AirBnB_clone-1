@@ -16,8 +16,10 @@ if [ ! -d "/data/web_static/current" ]; then
     sudo ln -sf /data/web_static/releases/test /data/web_static/current
 fi
 sudo chown -R ubuntu:ubuntu /data/
-echo "Hello Holberton: This is a test" >> /data/web_static/releases/test/index.html
 
+if [ ! -f "/data/web_static/releases/test/index.html" ]; then
+    echo "Hello Holberton: This is a test" >> /data/web_static/releases/test/index.html
+fi
 line_search="404.html;"
 alias_line="location /hbnb_static/ {\n\t\t alias /data/web_static/current/;\n\t}"
 sudo sed -i "/$line_search/ a\ $alias_line" /etc/nginx/sites-enabled/default
