@@ -5,7 +5,11 @@ import time
 
 def do_pack():
     timestr = time.strftime("%Y%m%d%H%M%S")
-    execute = "tar -cvzf web_static_{}.tgz web_static".format(timestr)
     if os.path.exists('./versions') is False:
         local("mkdir versions")
-    local(execute + " -C ./versions")
+    execute = "tar -cvzf ./versions/web_static_{}.tgz web_static".format(timestr)
+    result = local(execute)
+    if result.succeeded:
+        return "versions/web_static_{}".format(timestr)
+    else:
+        return None
