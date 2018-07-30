@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Sets up web servers for the deployment of webstatic
-if [ ! -d "/usr/sbin/nginx/" ]; then
+if [ ! -f "/usr/sbin/nginx" ]; then
     sudo apt-get -y install nginx
 fi
 
@@ -18,7 +18,7 @@ fi
 sudo chown -R ubuntu:ubuntu /data/
 echo "Hello Holberton: This is a test" >> /data/web_static/releases/test/index.html
 
-line_search="server_name localhost;"
-alias_line="\tlocation /hbnb_static/ {\n\t\t alias /data/web_static/current/;\n\t}"
+line_search="404.html;"
+alias_line="location /hbnb_static/ {\n\t\t alias /data/web_static/current/;\n\t}"
 sudo sed -i "/$line_search/ a\ $alias_line" /etc/nginx/sites-enabled/default
 sudo service nginx restart
