@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Sets up web servers for the deployment of webstatic
+sudo apt-get -y update
 if [ ! -f "/usr/sbin/nginx" ]; then
     sudo apt-get -y install nginx
 fi
