@@ -9,6 +9,7 @@ app.url_map.strick_slashes = False
 def hello_hbnb():
     return 'Hello HBNB!'
 
+@app.route('/hbnb')
 def hbnb():
     return 'HBNB'
 
