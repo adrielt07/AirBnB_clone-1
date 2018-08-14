@@ -4,6 +4,8 @@ import os
 import time
 
 env.hosts = ['35.227.25.29', '35.237.11.121']
+
+
 def do_pack():
     timestr = time.strftime("%Y%m%d%H%M%S")
     if os.path.exists('./versions') is False:
@@ -15,6 +17,7 @@ def do_pack():
         return "versions/web_static_{}".format(timestr)
     else:
         return None
+
 
 def do_deploy(archive_path):
     if (os.path.exists(archive_path) is False):
@@ -28,9 +31,9 @@ def do_deploy(archive_path):
     run('tar -xzf /tmp/{} -C {}{}/'.format(name_ext, location, name))
     run('rm /tmp/{}'.format(name_ext))
     run('mv {}{}/web_static/* {}{}/'.format(location, name, location, name))
-    run ('rm -rf {}{}/web_static'.format(location, name))
-    run ('rm -rf /data/web_static/current')
-    res = run ('ln -sf {}{}/ /data/web_static/current'.format(location, name))
+    run('rm -rf {}{}/web_static'.format(location, name))
+    run('rm -rf /data/web_static/current')
+    res = run('ln -sf {}{}/ /data/web_static/current'.format(location, name))
     if res.succeeded:
         print("New version deployed!")
         return True
