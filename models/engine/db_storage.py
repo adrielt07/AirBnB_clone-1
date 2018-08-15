@@ -39,7 +39,10 @@ class DBStorage:
         db_dict = {}
 
         if cls != "":
-            objs = self.__session.query(models.classes[cls]).all()
+            if isinstance(cls, str) is True:
+                objs = self.__session.query(models.classes[cls]).all()
+            else:
+                objs = self.__session.query(cls).all()
             for obj in objs:
                 key = "{}.{}".format(obj.__class__.__name__, obj.id)
                 db_dict[key] = obj
