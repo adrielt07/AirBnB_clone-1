@@ -7,12 +7,13 @@
         <H1>States</H1>
 	<UL>
 	{% for states in new_dict|sort(attribute='name') %}
-	  <LI>{{ states.id }}: <B>{{ states.name }}</B></LI>
-	         <UL>
-		     {% for cities in new_dict[states]|sort(attribute='name') %}
-		     <LI>{{ cities.id }}: <B>{{ cities.name }}</B></LI>
-		     {% endfor %}
-		 </UL>
+	<LI>{{ states.id }}: <B>{{ states.name }}</B>
+	  <UL>
+	    {% for cities in new_dict[states]|sort(attribute='name') %}
+	    <LI>{{ cities.id }}: <B>{{ cities.name }}</B></LI>
+	    {% endfor %}
+	  </UL>
+	</LI>
 	{% endfor %}
 	</UL>
     </BODY>
