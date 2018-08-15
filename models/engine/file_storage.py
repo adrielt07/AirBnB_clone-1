@@ -22,6 +22,8 @@ class FileStorage:
             return self.__objects
 
         if cls != "":
+            if isinstance(cls, str) is False:
+                cls = cls.__name__
             for k, v in self.__objects.items():
                 if cls == k.split(".")[0]:
                     new_dict[k] = v
