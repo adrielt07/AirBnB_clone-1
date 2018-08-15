@@ -6,22 +6,24 @@
     <BODY>
 
        <H1>{{ status }}</H1>
-        {% if cities != None %}
+       {% if loop == "cities" %}
        <H3>Cities:</H3>
        <UL>
-
                {% for item in a_list %}
-	       <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>{{ "\n" }}
+	       {% if i > 1 %}{{ "\n" }}{% endif %}
+	       <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
+	       {% set i = 3 %}
 	       {% endfor %}
-	{% endif %}
-      {% if cities == None %}
-       <UL>
-	{% for item in a_list %}
-
-	   <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
-	{% endfor %}
-
-      {% endif %}
        </UL>
+       {% endif %}
+       {% if loop == "states" %}
+       <UL>
+
+	{% for item in a_list %}
+	   <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>{{ "\n" }}
+	{% endfor %}
+       </UL>
+       {% endif %}
+
     </BODY>
 </HTML>

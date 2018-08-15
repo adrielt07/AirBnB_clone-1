@@ -51,19 +51,20 @@ def states(id=None):
         try:
             all_states = states_dict[key]
         except:
-            return render_template('9-states.html', status="Not found!")
+            return render_template('9-states.html', status="Not found!",
+                                   loop="Nothing")
 
         for k, v in cities_dict.items():
             if v.state_id == id:
                 a_list.append(v)
         return render_template('9-states.html',
                                status="State: {}".format(all_states.name),
-                               a_list=a_list, cities="cities")
+                               a_list=a_list, loop="cities", i=0)
 
     for k, v in states_dict.items():
         a_list.append(v)
     return render_template('9-states.html', status="States",
-                           a_list=a_list, cities=None)
+                           a_list=a_list, loop="states")
 
 
 if __name__ == '__main__':
