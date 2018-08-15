@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+
+      <H1>{{ status }}</H1>
+      {% if cities != None %}<H3>Cities:</H3>{% endif %}
+      <UL> {% for item in a_list %}
+	      <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
+       {% endfor %}</UL>
+
+    </BODY>
+</HTML>
