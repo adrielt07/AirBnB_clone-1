@@ -10,9 +10,8 @@
        <H3>Cities:</H3>
        <UL>
                {% for item in a_list %}
-	       {% if i > 1 %}{{ "\n" }}{% endif %}
 	       <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
-	       {% set i = 3 %}
+	       {% if not loop.last %}{{ "\n" }}{% endif %}
 	       {% endfor %}
        </UL>
        {% endif %}
