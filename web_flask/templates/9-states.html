@@ -9,7 +9,7 @@
        {% if loop == "cities" %}
        <H3>Cities:</H3>
        <UL>
-               {% for item in a_list %}
+               {% for item in a_list|sort(attribute='name') %}
 	       <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>
 	       {% if not loop.last %}{{ "\n" }}{% endif %}
 	       {% endfor %}
@@ -18,7 +18,7 @@
        {% if loop == "states" %}
        <UL>
 
-	{% for item in a_list %}
+	{% for item in a_list|sort(attribute='name') %}
 	   <LI>{{ item.id }}: <B>{{ item.name }}</B></LI>{{ "\n" }}
 	{% endfor %}
        </UL>
