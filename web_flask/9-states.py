@@ -54,14 +54,14 @@ def states(id=None):
             return render_template('9-states.html', status="Not found!",
                                    loop="Nothing")
 
-        for k, v in cities_dict.items():
+        for v in cities_dict.values():
             if v.state_id == id:
                 a_list.append(v)
         return render_template('9-states.html',
                                status="State: {}".format(all_states.name),
-                               a_list=a_list, loop="cities", i=0)
+                               a_list=a_list, loop="cities")
 
-    for k, v in states_dict.items():
+    for v in states_dict.values():
         a_list.append(v)
     return render_template('9-states.html', status="States",
                            a_list=a_list, loop="states")
