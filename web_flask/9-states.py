@@ -61,8 +61,7 @@ def states(id=None):
                                status="State: {}".format(all_states.name),
                                a_list=a_list, loop="cities")
 
-    for v in states_dict.values():
-        a_list.append(v)
+    a_list = states_dict.values()
     return render_template('9-states.html', status="States",
                            a_list=a_list, loop="states")
 
