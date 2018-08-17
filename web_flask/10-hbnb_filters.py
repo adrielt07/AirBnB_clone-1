@@ -18,6 +18,9 @@ def teardown(exception):
 
 @app.route('/states_list')
 def states_list():
+    """
+    create a route '/states_list'
+    """
     states_dict = storage.all(State)
     all_states = []
     for k, v in states_dict.items():
@@ -27,6 +30,9 @@ def states_list():
 
 @app.route('/cities_by_states')
 def cities_states():
+    """
+    create a route '/cities_by_states'
+    """
     states_dict = storage.all(State)
     cities_dict = storage.all(City)
     all_cities = []
@@ -43,6 +49,9 @@ def cities_states():
 @app.route('/states')
 @app.route('/states/<id>')
 def states(id=None):
+    """
+    Create a route '/states' and '/states/<id>'
+    """
     states_dict = storage.all(State)
     cities_dict = storage.all(City)
     a_list = []
@@ -68,6 +77,9 @@ def states(id=None):
 
 @app.route('/hbnb_filters')
 def hbnbfilters():
+    """
+    create a route '/hbnb_filters'
+    """
     all_amenities = storage.all('Amenity')
     all_states = storage.all('State')
     return render_template('10-hbnb_filters.html', all_amenities=all_amenities,
