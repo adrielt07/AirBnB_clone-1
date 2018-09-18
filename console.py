@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
             return
         try:
             args = shlex.split(args)
-            new_instance = eval(args[0])()
+            new_instance = models.classes[args[0]]()
             for i in args[1:]:
                 try:
                     key = i.split("=")[0]
